@@ -11,6 +11,9 @@ fn main() {
     let d = double_float64(4.5);
     assert_eq!(d, 9f64);
 
+    let e = int_plus_float_to_float(10, 6.25);
+    assert_eq!(e, 16.25);
+
     let e = int_plus_float_to_int(10, 6.25);
     assert_eq!(e, 16);
 
@@ -26,7 +29,7 @@ fn double_int32(a: i32) -> i32 {
 }
 
 fn double_int64(a: i32) -> i64 {
-    a as i64 * 2i64
+    a as i64 * 2
 }
 
 fn double_float32(a: f32) -> f32 {
@@ -35,6 +38,10 @@ fn double_float32(a: f32) -> f32 {
 
 fn double_float64(a: f32) -> f64 {
     a as f64 * 2f64
+}
+
+fn int_plus_float_to_float(a: i32, b: f32) -> f64 {
+    a as f64 + b as f64
 }
 
 fn int_plus_float_to_int(a: i32, b: f32) -> i64 {
