@@ -1,0 +1,25 @@
+name: Rust Lint
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  lint:
+    name: Run cargo fmt & clippy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy, rustfmt
+
+      - name: Run cargo fmt (check mode)
+        run: cargo fmt --all -- --check
+
+      - name: Run cargo clippy
+        run: cargo clippy --all-targets --all-features -- -D warnings
